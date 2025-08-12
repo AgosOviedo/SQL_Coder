@@ -61,5 +61,6 @@ Clave primaria: id_detalle
 Clave foránea:
 id_pedido
 id_camion 
-
+# SCRIPT DE LA BASE DE DATOS - LINKS
+## [Crear base y tablas]()
 # AUTOR: MARIA AGOSTINA OVIEDO
