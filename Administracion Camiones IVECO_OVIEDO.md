@@ -1,6 +1,6 @@
 # SQL_Coder
 SQL Coder House - Maria Agostina Oviedo
-ENTREGA 1 - SQL - CODERHOUSE
+ENTREGA 1 y 2 - SQL - CODERHOUSE
 # INTRODUCCIÓN
 El presente proyecto tiene como finalidad el desarrollo de una base de datos relacional para la gestión integral del stock comercial y las operaciones de venta de camiones en IVECO Group. Este sistema permitirá centralizar la información de los vehículos disponibles para la venta, registrar pedidos de clientes, gestionar listas de precios, aplicar descuentos y llevar un seguimiento de los pagos, facturación y cambios de estado de los camiones.
 La propuesta busca optimizar la disponibilidad de datos para la toma de decisiones comerciales y administrativas, facilitando el acceso rápido y preciso a información clave sobre el inventario y las operaciones de ventas.
