@@ -63,4 +63,45 @@ id_pedido
 id_camion 
 # SCRIPT DE LA BASE DE DATOS - LINKS
 ## [Crear base y tablas]()
+# ENTREGA 2:
+# VISTAS
+## vw_precios_vigentes
+Muestra el precio vigente por camión a la fecha actual. Tablas: camion, precio.
+## vw_descuentos_vigentes
+Lista los descuentos vigentes por categoría. Tablas: categoria_camion,
+descuento.
+## vw_catalogo_camiones:
+Catálogo consolidado con precio vigente, descuento vigente, precio final y stock. Tablas/funciones: camion, categoria_camion, fn_precio_vigente, fn_descuento_vigente, fn_precio_final, stock.
+## vw_pedidos_detallados:
+Detalle de pedidos con precios y totales por línea según la fecha del pedido.
+Tablas/funciones: pedido, cliente, detalle_pedido, camion, fn_precio_vigente, fn_precio_final.
+## vw_stock_bajo:
+Detecta camiones con stock menor a 3 unidades. Tablas: camion, stock.
+
+# FUNCIONES
+## fn_precio_vigente(id_camion, fecha)
+Devuelve el precio vigente de un camión en una fecha. Lee tabla precio.
+## fn_descuento_vigente(id_camion, fecha)
+Devuelve el porcentaje de descuento vigente según la categoría del camión en una fecha. Lee tablas camion y descuento.
+## fn_precio_final(id_camion, fecha): 
+Calcula el precio final aplicando el descuento vigente sobre el precio vigente. Usa fn_precio_vigente y fn_descuento_vigente.
+## fn_stock_disponible(id_camion):
+Devuelve la cantidad actual en stock. Lee tabla stock.
+
+# STORED PROCEDURES
+## sp_crear_pedido(id_cliente, OUT id_pedido):
+Crea un pedido en estado 'pendiente' y retorna su ID. Impacta en tabla pedido.
+## sp_agregar_item_pedido(id_pedido, id_camion, cantidad):
+Valida estado del pedido y stock disponible; inserta o acumula el ítem. Impacta en detalle_pedido. Lee stock y pedido.
+## sp_confirmar_pedido(id_pedido):
+Valida stock por cada ítem, descuenta del stock y cambia estado a confirmado de manera transaccional. Impacta stock y pedido.
+
+# TRIGGERS
+## trg_detalle_bi_valida_cantidad (BEFORE INSERT ON detalle_pedido):
+Obliga a que la cantidad sea mayor a cero.
+## trg_pedido_au_descuenta_stock (AFTER UPDATE ON pedido):
+Si se pasa a 'confirmado', descuenta stock por cada detalle.
+## trg_camion_ad_auditoria: 
+Registra en tabla de auditoría los camiones borrados.
+
 # AUTOR: MARIA AGOSTINA OVIEDO
