@@ -62,8 +62,8 @@ Clave foránea:
 id_pedido
 id_camion 
 # SCRIPT DE LA BASE DE DATOS - LINKS
-## [Crear base y tablas]()
-## [Crear Vistas, Funciones, Stored Procedures y Triggers] ()
+## [Crear base y tablas](https://github.com/AgosOviedo/SQL_Coder/blob/main/Creacion%20de%20base%20de%20datos%20y%20tabla.sql)
+## [Crear Vistas, Funciones, Stored Procedures y Triggers](https://github.com/AgosOviedo/SQL_Coder/blob/main/Entrega2_Oviedo_Vistas%2C%20Funciones%2C%20Stored%20Procedures%20y%20Triggers.sql)
 # ENTREGA 2:
 # VISTAS
 ## vw_precios_vigentes
