@@ -70,3 +70,5 @@ CREATE TABLE IF NOT EXISTS detalle_pedido (
     FOREIGN KEY (id_pedido) REFERENCES Pedido(id_pedido),
     FOREIGN KEY (id_camion) REFERENCES Camion(id_camion)
 );
+ALTER TABLE detalle_pedido
+  ADD CONSTRAINT uq_pedido_camion UNIQUE (id_pedido, id_camion);
