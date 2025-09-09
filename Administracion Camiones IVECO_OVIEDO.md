@@ -63,6 +63,7 @@ id_pedido
 id_camion 
 # SCRIPT DE LA BASE DE DATOS - LINKS
 ## [Crear base y tablas]()
+## [Crear Vistas, Funciones, Stored Procedures y Triggers] ()
 # ENTREGA 2:
 # VISTAS
 ## vw_precios_vigentes
