@@ -274,37 +274,12 @@ AFTER UPDATE ON pedido
 FOR EACH ROW
 BEGIN
     IF NEW.estado = 'confirmado' AND OLD.estado <> 'confirmado' THEN
-        DECLARE v_id_camion INT;
-        DECLARE v_cantidad INT;
-        DECLARE done INT DEFAULT 0;
-
-        -- Cursor para recorrer cada detalle del pedido
-        DECLARE cur_detalle CURSOR FOR
-            SELECT id_camion, cantidad
-            FROM detalle_pedido
-            WHERE id_pedido = NEW.id_pedido;
-
-        DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
-
-        OPEN cur_detalle;
-
-        read_loop: LOOP
-            FETCH cur_detalle INTO v_id_camion, v_cantidad;
-            IF done = 1 THEN
-                LEAVE read_loop;
-            END IF;
-
-            -- Actualiza stock
-            UPDATE stock
-            SET cantidad_actual = cantidad_actual - v_cantidad
-            WHERE id_camion = v_id_camion;
-        END LOOP;
-
-        CLOSE cur_detalle;
+        UPDATE stock s
+        JOIN detalle_pedido dp ON s.id_camion = dp.id_camion
+        SET s.cantidad_actual = s.cantidad_actual - dp.cantidad
+        WHERE dp.id_pedido = NEW.id_pedido;
     END IF;
 END;
-//
-
 -- 3) Auditoría de borrado de camiones
 CREATE TABLE IF NOT EXISTS auditoria_borrados (
     id_auditoria INT AUTO_INCREMENT PRIMARY KEY,
