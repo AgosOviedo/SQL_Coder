@@ -1,6 +1,6 @@
 # SQL_Coder
 SQL Coder House - Maria Agostina Oviedo
-ENTREGA 1 y 2 - SQL - CODERHOUSE
+Trabajo Final - SQL - CODERHOUSE
 # INTRODUCCIÓN
 El presente proyecto tiene como finalidad el desarrollo de una base de datos relacional para la gestión integral del stock comercial y las operaciones de venta de camiones en IVECO Group. Este sistema permitirá centralizar la información de los vehículos disponibles para la venta, registrar pedidos de clientes, gestionar listas de precios, aplicar descuentos y llevar un seguimiento de los pagos, facturación y cambios de estado de los camiones.
 La propuesta busca optimizar la disponibilidad de datos para la toma de decisiones comerciales y administrativas, facilitando el acceso rápido y preciso a información clave sobre el inventario y las operaciones de ventas.
@@ -65,7 +65,6 @@ id_camion
 ## [Crear base y tablas](https://github.com/AgosOviedo/SQL_Coder/blob/main/Creacion%20de%20base%20de%20datos%20y%20tabla.sql)
 ## [Crear Vistas, Funciones, Stored Procedures y Triggers](https://github.com/AgosOviedo/SQL_Coder/blob/main/Entrega2_Oviedo_Vistas%2C%20Funciones%2C%20Stored%20Procedures%20y%20Triggers.sql)
 ## [Cargar datos](https://github.com/AgosOviedo/SQL_Coder/blob/main/Entrega2_Oviedo_Carga%20de%20datos.sql) 
-# ENTREGA 2:
 # VISTAS
 ## vw_precios_vigentes
 Muestra el precio vigente por camión a la fecha actual. Tablas: camion, precio.
