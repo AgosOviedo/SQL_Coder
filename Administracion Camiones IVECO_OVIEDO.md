@@ -61,6 +61,33 @@ Clave primaria: id_detalle
 Clave foránea:
 id_pedido
 id_camion 
+## Tabla "proveedor"
+Descripción: Datos de los proveedores de camiones.
+Clave primaria: id_proveedor
+## Tabla "factura"
+Descripción: Registra facturas asociadas a pedidos.
+Clave primaria: id_factura
+Clave foránea: id_pedido
+## Tabla "envio"
+Descripción: Controla los envíos realizados por cada pedido.
+Clave primaria: id_envio
+Clave foránea: id_pedido
+## Tabla "pago"
+Descripción: Registra pagos asociados a facturas.
+Clave primaria: id_pago
+Clave foránea: id_factura
+## Tabla "auditoria stock"
+Descripción: Guarda cambios en cantidades de stock (antes y después).
+Clave primaria: id_auditoria
+Clave foránea: id_camion
+## Tabla "auditoria borrados"
+Descripción: Guarda registros de borrados de camiones con detalle del usuario y fecha.
+clave primaria: id_auditoria
+## Tabla "log_precio"
+Descripción: Log histórico de cambios de precios (precio anterior/nuevo, usuario, fecha).
+Clave primaria: id_log
+Clave foranea: id_camion
+
 # SCRIPT DE LA BASE DE DATOS - LINKS
 ## [Crear base y tablas](https://github.com/AgosOviedo/SQL_Coder/blob/main/Creacion%20de%20base%20de%20datos%20y%20tabla.sql)
 ## [Crear Vistas, Funciones, Stored Procedures y Triggers](https://github.com/AgosOviedo/SQL_Coder/blob/main/Entrega2_Oviedo_Vistas%2C%20Funciones%2C%20Stored%20Procedures%20y%20Triggers.sql)
@@ -100,9 +127,13 @@ Valida stock por cada ítem, descuenta del stock y cambia estado a confirmado de
 # TRIGGERS
 ## trg_detalle_bi_valida_cantidad (BEFORE INSERT ON detalle_pedido):
 Obliga a que la cantidad sea mayor a cero.
-## trg_pedido_au_descuenta_stock (AFTER UPDATE ON pedido):
-Si se pasa a 'confirmado', descuenta stock por cada detalle.
 ## trg_camion_ad_auditoria: 
 Registra en tabla de auditoría los camiones borrados.
 
+# Analítica 
+## ventas por modelo y periodo
+## Stock disponible por categoría
+## Clientes que más compraron
+## Ranking de camiones más vendidos
+## Evolución de ventas mensuales
 # AUTOR: MARIA AGOSTINA OVIEDO
