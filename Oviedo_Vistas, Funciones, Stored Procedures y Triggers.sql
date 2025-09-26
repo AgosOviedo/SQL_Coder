@@ -1,4 +1,3 @@
--- Entrega 2
 -- Creación de Vistas, Funciones, Stored Procedures y Triggers
 
 USE CamionesIVECO;
@@ -266,29 +265,6 @@ BEGIN
         SET MESSAGE_TEXT = 'La cantidad del pedido debe ser mayor a cero.';
     END IF;
 END;
-//
-
--- 2) Descuenta stock cuando un pedido se confirma
-CREATE TRIGGER trg_pedido_au_descuenta_stock
-AFTER UPDATE ON pedido
-FOR EACH ROW
-BEGIN
-    IF NEW.estado = 'confirmado' AND OLD.estado <> 'confirmado' THEN
-        UPDATE stock s
-        JOIN detalle_pedido dp ON s.id_camion = dp.id_camion
-        SET s.cantidad_actual = s.cantidad_actual - dp.cantidad
-        WHERE dp.id_pedido = NEW.id_pedido;
-    END IF;
-END;
--- 3) Auditoría de borrado de camiones
-CREATE TABLE IF NOT EXISTS auditoria_borrados (
-    id_auditoria INT AUTO_INCREMENT PRIMARY KEY,
-    tabla_afectada VARCHAR(50),
-    id_registro INT,
-    descripcion TEXT,
-    fecha_borrado DATETIME,
-    usuario VARCHAR(50)
-);
 //
 
 CREATE TRIGGER trg_camion_ad_auditoria

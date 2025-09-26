@@ -1,4 +1,3 @@
--- Entrega 2
 -- DATOS (Inserciones de prueba)
 
 USE CamionesIVECO;
@@ -14,9 +13,11 @@ INSERT INTO camion (modelo, año, color, motor, estado, id_categoria) VALUES
 ('S-Way 560', 2025, 'Rojo', 'Cursor 13', 'disponible', 3);
 
 -- Stock:
-UPDATE stock SET cantidad_actual = 25 WHERE id_camion = 1;
-UPDATE stock SET cantidad_actual = 30 WHERE id_camion = 2;
-UPDATE stock SET cantidad_actual = 21 WHERE id_camion = 3;
+INSERT INTO stock (id_camion, cantidad_actual)
+VALUES
+(1, 25),
+(2, 30),
+(3, 21);
 
 -- Clientes
 INSERT INTO cliente (nombre, apellido, email, telefono) VALUES
@@ -31,7 +32,7 @@ INSERT INTO precio (id_camion, precio, fecha_inicio, fecha_fin) VALUES
 
 -- Descuentos por categoría ( 5% Gamma Medium, 2% Gamma Heavy)
 INSERT INTO descuento (descripcion, porcentaje, fecha_inicio, fecha_fin, id_categoria) VALUES
-('Promo septiembre Light', 0.00, '2025-01-01', NULL, 1),
+('Promo septiembre Light', 0.15, '2025-01-01', NULL, 1),
 ('Plan Medium', 5.00, '2025-01-01', NULL, 2),
 ('Bonificacion Heavy', 2.00, '2025-01-01', NULL, 3);
 
